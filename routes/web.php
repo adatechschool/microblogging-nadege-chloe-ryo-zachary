@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ Route::middleware('auth')->group(function () {
     //Nouvelle route pour visualiser le contenu d'un post : {post} est un paramètre dynamique (représente l'ID du post)
     //Route associée à la méthode 'show' du contrôlleur 'PostController'
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+    //Route pour les users
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 });
 
 require __DIR__.'/auth.php';
