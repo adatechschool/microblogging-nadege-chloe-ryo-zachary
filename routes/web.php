@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/post/{id}', [PostController::class, 'show'])->name('post.show');
+
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.profile');
+
 
 require __DIR__.'/auth.php';
