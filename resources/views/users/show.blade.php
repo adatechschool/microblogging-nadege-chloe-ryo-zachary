@@ -9,5 +9,13 @@
     <h1>{{ $user->name }}</h1>
     <p>{{ $user->email }}</p>
     <p>{{$user->biography}}</p>
+
+    @foreach ($user->posts as $post ) 
+<div class="posts">
+      <h2>{{$post->title}}</h2>
+      <p>{{$post->content}}</p>   
+</div>  
+    @endforeach
+
 </body>
 </html>

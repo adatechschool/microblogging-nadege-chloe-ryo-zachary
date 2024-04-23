@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function show(Post $post)
+    public function show(Post $posts)
     {
         //Renvoie la vue 'posts/show.blade.php' avec le post récupéré
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', ['post' => $posts]);
     }
 }
