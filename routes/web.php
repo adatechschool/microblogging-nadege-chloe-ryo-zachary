@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/post/{post}', [PostController::class, 'show'])->name('posts.show');
 
+    Route::patch('/newPost', [PostController::class, 'store'])->name('newPost');
+
     Route::get('/user/{user}', [UserController::class, 'show'])->name('users.show');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
