@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    //Mise à jour de la biographie
+    Route::patch('/profile/update-bio', [ProfileController::class, 'update'])->name('profile.update');
+
+
     //Nouvelle route pour visualiser le contenu d'un post : {post} est un paramètre dynamique (représente l'ID du post)
     //Route associée à la méthode 'show' du contrôlleur 'PostController'
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');

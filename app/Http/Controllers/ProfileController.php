@@ -31,26 +31,31 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-
+        
+        if($request->has('biography')) {
+            $user = $request->user();
+            $user->biography = $request->input('biography');
+        }
+        
         $request->user()->save();
-
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
 
-    //Tentative de update le bio
-    public function updateBio(Request $request, $id)
-{
-    // Valider les données entrantes
-    $request->validate([
-        'biography' => 'required|string|max:255',
-    ]);
+//     //Tentative de update le bio
+//     public function updateBio(Request $request)
+// {
+//     // Valider les données entrantes
+//     $request->validate([
+//         'biography' => 'required|string|max:255',
+//     ]);
 
-    // Mettre à jour la biographie
-    $request->user()->biography = $request->input('bio');
-    $request->user()->save();
+//     // Mettre à jour la biographie
+//     $user = $request->user();
+//     $user->biography = $request->input('biography');
+//     $user->save();
 
-}
+// }
 
     /**
      * Delete the user's account.
