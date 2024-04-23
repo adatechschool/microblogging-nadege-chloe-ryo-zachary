@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CreatePostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -39,6 +40,7 @@ Route::middleware('auth')->group(function () {
 
     //Route pour les users
     Route::get('/user', [UserController::class, 'show'])->name('users.show');
+    Route::get('/new-post', [CreatePostController::class, 'create'])->name('posts.create');
 });
 
 require __DIR__.'/auth.php';
