@@ -37,6 +37,21 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+
+    //Tentative de update le bio
+    public function updateBio(Request $request, $id)
+{
+    // Valider les données entrantes
+    $request->validate([
+        'biography' => 'required|string|max:255',
+    ]);
+
+    // Mettre à jour la biographie
+    $request->user()->biography = $request->input('bio');
+    $request->user()->save();
+
+}
+
     /**
      * Delete the user's account.
      */
