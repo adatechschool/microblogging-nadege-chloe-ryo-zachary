@@ -10,12 +10,12 @@ class Post extends Model
     use HasFactory;
 
     // The fillable property is used to define which fields can be mass assigned.
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'created_at'];
 
     // The user method defines a relationship between the Post and User models, where a post belongs to a ONE user.
     //permet à Eloquent de comprendre comment récupérer l'utilisateur auquel un post appartient.
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
