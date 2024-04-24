@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CreatePostController extends Controller
@@ -21,5 +23,19 @@ class CreatePostController extends Controller
             'post' => $request->post(),
         ]);
     }
-    // public function store(Request $request);
+    public function store(Request $request) : RedirectResponse {
+        // dd($request);
+        $request->validate([
+            'title'=> 'required|max:255',
+            'content'=>'required'
+        ]);
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->user_id=Auth::user()->id;
+        $post->save();
+        return redirect()->route('dashboard')->with('success','');
+        // Post::create($request->all());
+    }
 }

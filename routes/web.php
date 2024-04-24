@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CreatePostController;
+use App\Http\Controllers\DashboarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -21,9 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboarController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,6 +40,9 @@ Route::middleware('auth')->group(function () {
     //Route pour les users
     Route::get('/user', [UserController::class, 'show'])->name('users.show');
     Route::get('/new-post', [CreatePostController::class, 'create'])->name('posts.create');
+    Route::post('/new-post',[CreatePostController::class,'store']);
+    // Route::ressource('new-post', CreatePostController::class)
+    // ->only(['index', 'store']);
 });
 
 require __DIR__.'/auth.php';
