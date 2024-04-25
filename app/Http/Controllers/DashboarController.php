@@ -10,7 +10,7 @@ class DashboarController extends Controller
     public function index() {
         $posts = Post::all();
         $posts = Post::with('user')->get();
-        $posts = Post::orderBy('created_at','desc')->paginate(10);
+        $posts = Post::orderBy('created_at','desc')->paginate(30);
         return view("dashboard", ['posts'=> $posts]);
     }
 }
