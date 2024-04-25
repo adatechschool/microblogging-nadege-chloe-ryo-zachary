@@ -10,6 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("Bonjour !") }}
+                    <iframe src="https://giphy.com/embed/bcKmIWkUMCjVm" width="480" height="349" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/animated-hello-waving-bcKmIWkUMCjVm"></a></p>
                 </div>
 
             </div>
@@ -18,8 +19,9 @@
         
     </div>
 
-
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
     @foreach ($posts as $post )
+    <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
     <div class="bg-white py-24 sm:py-32">
          <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -50,6 +52,8 @@
             </div>
             </div>
             </div>
+            </div>
               @endforeach
+          </div>
 
 </x-app-layout>
